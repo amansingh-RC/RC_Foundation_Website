@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Royal Care Foundation — Content Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Login screen -->
+  <div id="loginScreen" class="login-screen">
+    <form id="loginForm" class="login-card">
+      <div class="login-mark">RCF</div>
+      <h1>Content Admin</h1>
+      <p class="login-sub">Sign in to edit page sections and SEO tags.</p>
+      <label class="field-label" for="loginPassword">Admin password</label>
+      <input id="loginPassword" type="password" autocomplete="current-password" required />
+      <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+      <p id="loginError" class="form-error" hidden></p>
+    </form>
+  </div>
+
+  <!-- App shell -->
+  <div id="app" class="app" hidden>
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">RCF</div>
+        <div>
+          <div class="brand-name">Royal Care</div>
+          <div class="brand-sub">Content Admin</div>
+        </div>
+      </div>
+      <nav id="pageNav" class="page-nav"></nav>
+      <button id="logoutBtn" class="btn btn-ghost btn-block logout-btn">Sign out</button>
+    </aside>
+
+    <main class="main">
+      <header class="main-header">
+        <div>
+          <div class="eyebrow" id="activeSlugLabel">PAGE</div>
+          <h1 id="activePageTitle">—</h1>
+        </div>
+        <div class="header-actions">
+          <span id="saveStatus" class="save-status"></span>
+          <button id="saveBtn" class="btn btn-primary">Save changes</button>
+        </div>
+      </header>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="content">Content</button>
+        <button class="tab" data-tab="seo">SEO tags</button>
+      </div>
+
+      <div id="contentPanel" class="panel"></div>
+      <div id="seoPanel" class="panel" hidden></div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

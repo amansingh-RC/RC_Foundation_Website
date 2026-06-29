@@ -1,0 +1,376 @@
+{
+  "home": {
+    "label": "Home",
+    "seo": {
+      "metaTitle": "Royal Care Foundation — A Promise of Care, A Legacy of Giving",
+      "metaDescription": "Royal Care Foundation removes barriers to education and healthcare while strengthening community resilience through transparent, long-term partnership.",
+      "keywords": "royal care foundation, charity, community support, education access, healthcare support",
+      "ogTitle": "A Promise of Care. A Legacy of Giving.",
+      "ogDescription": "Discover how Royal Care Foundation delivers lasting, dignity-first support across education, health, and community resilience.",
+      "ogImage": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80",
+      "canonicalUrl": "/",
+      "noindex": false
+    },
+    "content": {
+      "hero": {
+        "eyebrow": "Royal Care Foundation",
+        "title": "A Promise of Care. A Legacy of Giving.",
+        "subtitle": "Royal Care Foundation draws its deepest inspiration from the values and vision of our beloved grandfather, Sha. Futarmalji Dalichandji Jain — a man revered for his humility, generosity, and unwavering commitment to service.",
+        "tagline": "Royal Care Foundation – A Legacy of Service",
+        "primaryCtaLabel": "Read Full Story",
+        "primaryCtaLink": "/about",
+        "secondaryCtaLabel": "Our Pillars",
+        "secondaryCtaLink": "/pillars"
+      },
+      "inspiration": {
+        "eyebrow": "OUR INSPIRATION",
+        "quote": "Helping others is a duty.",
+        "body": "Royal Care Foundation draws its deepest inspiration from the values and vision of our beloved grandfather, Sha. Futarmalji Dalichandji Jain — a man revered for his humility, generosity, and unwavering belief in seva (service to humanity). He lived by the conviction that true wealth lies in giving.",
+        "personName": "Sha. Futarmalji Dalichandji Jain",
+        "personRole": "Founding Visionary"
+      },
+      "stats": [
+        {
+          "title": "Our Mission",
+          "body": "Deliver impactful, transparent, and sustainable initiatives for community welfare."
+        },
+        {
+          "title": "Our Vision",
+          "body": "To create a compassionate society where every individual has the opportunity to live with dignity."
+        },
+        {
+          "title": "10,000+ Lives Changed",
+          "body": "Through sustained programs and compassionate collaboration, we continue to reach families in need."
+        }
+      ],
+      "pillarsSection": {
+        "title": "Core Pillars of Change",
+        "subtitle": "Our work is organized around these core impact areas.",
+        "items": [
+          {
+            "title": "Livelihood & Rural Development",
+            "subtitle": "Strengthening local economies and farm families through sustainable support."
+          },
+          {
+            "title": "Health & Wellness",
+            "subtitle": "Improving healthcare access and support for vulnerable communities."
+          },
+          {
+            "title": "Women & Child Upliftment",
+            "subtitle": "Creating safe opportunities for women and young children to thrive."
+          },
+          {
+            "title": "Environment & Sustainability",
+            "subtitle": "Supporting eco-conscious programs that protect communities and land."
+          },
+          {
+            "title": "Disaster Response & Relief",
+            "subtitle": "Delivering urgent aid and recovery resources when communities need them most."
+          }
+        ]
+      },
+      "gallerySection": {
+        "title": "Gallery",
+        "subtitle": "Our work in action.",
+        "items": [
+          "Health & Wellness",
+          "Education access",
+          "Disaster Response & Relief"
+        ]
+      }
+    }
+  },
+  "about": {
+    "label": "About",
+    "seo": {
+      "metaTitle": "About Us — Royal Care Foundation",
+      "metaDescription": "Learn about Royal Care Foundation's mission, vision, values, and the team coordinating dignity-first, transparent community programs.",
+      "keywords": "about royal care foundation, mission, vision, values, leadership",
+      "ogTitle": "Compassionate support designed for lasting change.",
+      "ogDescription": "Royal Care Foundation works with local partners to remove barriers to education and healthcare.",
+      "ogImage": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80",
+      "canonicalUrl": "/about",
+      "noindex": false
+    },
+    "content": {
+      "hero": {
+        "eyebrow": "About the Foundation",
+        "title": "Compassionate support designed for lasting change.",
+        "description": "Royal Care Foundation exists to remove barriers to education and healthcare while strengthening community resilience. We work with local partners, listen deeply, and measure impact over time.",
+        "chips": [
+          "Dignity-first care",
+          "Transparent reporting",
+          "Community partnership"
+        ],
+        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+      },
+      "missionVision": {
+        "missionTitle": "Our mission",
+        "missionText": "Enable individuals and communities to thrive through education, accessible healthcare, and long-term support.",
+        "visionTitle": "Our vision",
+        "visionText": "A world where opportunity is reachable, needs are addressed early, and impact is durable."
+      },
+      "valuesSection": {
+        "title": "Values we practice",
+        "subtitle": "Every program reflects these commitments—how we plan, partner, deliver, and report.",
+        "items": [
+          {
+            "title": "Care with dignity",
+            "description": "We design support that respects each person's privacy, time, and experience."
+          },
+          {
+            "title": "Evidence and transparency",
+            "description": "Clear outcomes, honest updates, and thoughtful evaluation."
+          },
+          {
+            "title": "Collaboration",
+            "description": "We partner with local groups to ensure programs fit real community needs."
+          },
+          {
+            "title": "Long-term impact",
+            "description": "We stay engaged beyond initial relief so progress can continue."
+          },
+          {
+            "title": "Community ownership",
+            "description": "Sustainable programs empower people to lead their own recovery and growth."
+          },
+          {
+            "title": "Responsibility",
+            "description": "Stewardship of resources with integrity and purpose."
+          }
+        ]
+      },
+      "leadershipSection": {
+        "title": "Leadership & governance",
+        "subtitle": "A focused team supported by dedicated partners.",
+        "members": [
+          {
+            "role": "Programs Director",
+            "name": "Community-led Partnerships",
+            "bio": "We coordinate resources and ensure every initiative aligns with our mission."
+          },
+          {
+            "role": "Impact & Reporting",
+            "name": "Transparent Outcomes",
+            "bio": "We coordinate resources and ensure every initiative aligns with our mission."
+          },
+          {
+            "role": "Operations & Care",
+            "name": "Dignity-first Delivery",
+            "bio": "We coordinate resources and ensure every initiative aligns with our mission."
+          }
+        ]
+      }
+    }
+  },
+  "contact": {
+    "label": "Contact",
+    "seo": {
+      "metaTitle": "Contact Royal Care Foundation",
+      "metaDescription": "Reach out to Royal Care Foundation about partnerships, volunteering, or community support programs.",
+      "keywords": "contact royal care foundation, volunteer, partnership, donate",
+      "ogTitle": "Let's build impact together.",
+      "ogDescription": "Send a message to learn about partnerships, volunteering, or upcoming community support.",
+      "ogImage": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+      "canonicalUrl": "/contact",
+      "noindex": false
+    },
+    "content": {
+      "hero": {
+        "eyebrow": "Contact",
+        "title": "Let's build impact together.",
+        "description": "Send a message to learn about partnerships, volunteering, or upcoming community support."
+      },
+      "infoCard": {
+        "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
+        "responseTitle": "Our response time",
+        "responseText": "We typically respond within 1–2 business days. If your request is urgent, include that in your message.",
+        "email": "hello@royalcare.org",
+        "phone": "+1 (000) 123-4567",
+        "location": "Community Partnerships Office"
+      },
+      "form": {
+        "heading": "Send a message",
+        "submitLabel": "Send message",
+        "secondaryCtaLabel": "Learn our pillars",
+        "secondaryCtaLink": "/pillars",
+        "successMessage": "Message sent! (Demo) We'll reach out shortly."
+      }
+    }
+  },
+  "gallery": {
+    "label": "Gallery",
+    "seo": {
+      "metaTitle": "Gallery — Royal Care Foundation",
+      "metaDescription": "See Royal Care Foundation's impact in action: tutoring, healthcare support, resource distribution, and community programs.",
+      "keywords": "royal care foundation gallery, community photos, impact stories",
+      "ogTitle": "Impact you can see.",
+      "ogDescription": "A snapshot of the moments that bring our mission to life—learning, care, and community support.",
+      "ogImage": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80",
+      "canonicalUrl": "/gallery",
+      "noindex": false
+    },
+    "content": {
+      "hero": {
+        "eyebrow": "Gallery",
+        "title": "Impact you can see.",
+        "description": "A snapshot of the moments that bring our mission to life—learning, care, and community support."
+      },
+      "items": [
+        {
+          "title": "Community tutoring sessions",
+          "image": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "title": "Healthcare support days",
+          "image": "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "title": "Resource distribution",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "title": "Volunteer mentorship",
+          "image": "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "title": "Partner collaboration",
+          "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "title": "Long-term care programs",
+          "image": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80"
+        }
+      ],
+      "ctaCard": {
+        "title": "Want to collaborate or donate resources?",
+        "description": "Reach out and we'll share upcoming opportunities and program timelines.",
+        "linkLabel": "Contact the Foundation →",
+        "linkTo": "/contact"
+      }
+    }
+  },
+  "legacy": {
+    "label": "Legacy",
+    "seo": {
+      "metaTitle": "Our Legacy — Royal Care Foundation",
+      "metaDescription": "Explore Royal Care Foundation's milestones, partner testimonials, and the trust built through years of community care.",
+      "keywords": "royal care foundation legacy, milestones, testimonials",
+      "ogTitle": "Built on trust, guided by outcomes.",
+      "ogDescription": "Our story is shaped by communities, sustained through partnerships, and measured through tangible results.",
+      "ogImage": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=80",
+      "canonicalUrl": "/legacy",
+      "noindex": false
+    },
+    "content": {
+      "hero": {
+        "eyebrow": "Legacy",
+        "title": "Built on trust, guided by outcomes.",
+        "description": "Our story is shaped by communities, sustained through partnerships, and measured through tangible results. Here are a few milestones and reflections from those we support."
+      },
+      "milestonesSection": {
+        "title": "Milestones",
+        "subtitle": "A timeline of growth rooted in compassion and responsible care.",
+        "items": [
+          {
+            "year": "2018",
+            "title": "Foundation begins",
+            "description": "Community partnerships and early support programs."
+          },
+          {
+            "year": "2020",
+            "title": "Expanded services",
+            "description": "Education and healthcare access initiatives grow."
+          },
+          {
+            "year": "2023",
+            "title": "Long-term care",
+            "description": "Durable, follow-up-focused support for communities."
+          }
+        ]
+      },
+      "testimonialsSection": {
+        "title": "What partners say",
+        "subtitle": "Reflections from people who have worked alongside our team.",
+        "items": [
+          {
+            "name": "Community Partner",
+            "role": "Local Outreach Team",
+            "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+            "quote": "Their approach is careful and consistent. The support is organized, respectful, and truly helpful."
+          },
+          {
+            "name": "Volunteer Coordinator",
+            "role": "Skills & Mentorship",
+            "avatar": "https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=400&q=80",
+            "quote": "Royal Care Foundation makes it easy for volunteers to contribute meaningfully and see real outcomes."
+          },
+          {
+            "name": "Beneficiary Advocate",
+            "role": "Healthcare Navigation",
+            "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+            "quote": "They help families understand options and access care with confidence. That changes everything."
+          }
+        ]
+      },
+      "ctaCard": {
+        "title": "Help shape the next chapter.",
+        "description": "Join us as a donor, volunteer, or long-term partner—so support can continue where it matters most.",
+        "linkLabel": "Contact us →",
+        "linkTo": "/contact"
+      }
+    }
+  },
+  "pillars": {
+    "label": "Pillars",
+    "seo": {
+      "metaTitle": "Our Pillars — Royal Care Foundation",
+      "metaDescription": "Royal Care Foundation focuses on education access, healthcare support, and long-term community care.",
+      "keywords": "royal care foundation pillars, education access, healthcare support, community care",
+      "ogTitle": "Three pillars. One mission.",
+      "ogDescription": "We focus resources where they create the strongest, most durable results—supported by partnership and measurable outcomes.",
+      "ogImage": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+      "canonicalUrl": "/pillars",
+      "noindex": false
+    },
+    "content": {
+      "hero": {
+        "eyebrow": "Our Pillars",
+        "title": "Three pillars. One mission.",
+        "description": "We focus resources where they create the strongest, most durable results—supported by partnership and measurable outcomes."
+      },
+      "pillars": [
+        {
+          "title": "Education access",
+          "description": "Scholarships, learning resources, and mentorship pathways for students who need a boost."
+        },
+        {
+          "title": "Healthcare support",
+          "description": "Essential care and navigation assistance—so families can access services with confidence."
+        },
+        {
+          "title": "Long-term community care",
+          "description": "Sustained programs that help communities recover, rebuild, and thrive over time."
+        }
+      ],
+      "processSection": {
+        "title": "How we deliver",
+        "subtitle": "A consistent process that keeps our work reliable and impactful.",
+        "steps": [
+          {
+            "title": "Listen & assess",
+            "description": "We partner with local communities to understand needs, constraints, and priorities."
+          },
+          {
+            "title": "Plan with care",
+            "description": "We co-design programs with clear goals and measurable outcomes."
+          },
+          {
+            "title": "Support & follow up",
+            "description": "We stay engaged through implementation and longer-term follow-up."
+          }
+        ]
+      }
+    }
+  }
+}
