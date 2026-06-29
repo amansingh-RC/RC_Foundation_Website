@@ -12,6 +12,7 @@ import {
 } from '@mui/material'
 import AnimatedReveal from '../components/AnimatedReveal'
 import Section from '../components/Section'
+import { Link } from 'react-router-dom'
 
 const contact = () => {
   const [form, setForm] = useState({ name: '', email: '', topic: '', message: '' })
@@ -19,24 +20,24 @@ const contact = () => {
 
   const submit = (e) => {
     e.preventDefault()
-    // Placeholder submit; can be wired to backend later.
     setOpen(true)
     setForm({ name: '', email: '', topic: '', message: '' })
   }
 
   return (
+    <>
     <Box>
       <Box sx={{ pt: { xs: 5, md: 7 }, pb: { xs: 4, md: 5 } }}>
         <Container maxWidth="lg">
           <AnimatedReveal animation="fadeUp">
-            <Typography sx={{ color: 'rgba(255,255,255,0.88)', fontWeight: 800 }} variant="overline">
+            <Typography sx={{ color: 'var(--accent)', fontWeight: 800 }} variant="overline">
               Contact
             </Typography>
             <Typography
               variant="h2"
               sx={{
                 mt: 2,
-                color: 'white',
+                color: 'var(--text)',
                 fontWeight: 950,
                 letterSpacing: -1.1,
                 lineHeight: 1.04,
@@ -45,7 +46,7 @@ const contact = () => {
             >
               Let’s build impact together.
             </Typography>
-            <Typography sx={{ mt: 2, color: 'rgba(255,255,255,0.78)', lineHeight: 1.8, maxWidth: 650 }}>
+            <Typography sx={{ mt: 2, color: 'var(--text-muted)', lineHeight: 1.8, maxWidth: 650 }}>
               Send a message to learn about partnerships, volunteering, or upcoming community support.
             </Typography>
           </AnimatedReveal>
@@ -60,32 +61,38 @@ const contact = () => {
                 <Paper
                   elevation={0}
                   sx={{
-                    p: 3,
                     borderRadius: 4,
-                    border: '1px solid rgba(255,255,255,0.10)',
-                    background:
-                      'linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
+                    border: '1px solid rgba(15, 23, 42, 0.08)',
+                    background: 'rgba(255,255,255,0.96)',
+                    overflow: 'hidden',
                   }}
                 >
-                  <Typography sx={{ color: 'white', fontWeight: 950, fontSize: 18 }}>
-                    Our response time
-                  </Typography>
-                  <Typography sx={{ mt: 1, color: 'rgba(255,255,255,0.74)', lineHeight: 1.8 }}>
+                  <Box
+                    component="img"
+                    src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
+                    alt="Support team"
+                    sx={{ width: '100%', height: 220, objectFit: 'cover' }}
+                  />
+                  <Box sx={{ p: 3 }}>
+                    <Typography sx={{ color: 'var(--text)', fontWeight: 950, fontSize: 18 }}>
+                      Our response time
+                    </Typography>
+                  <Typography sx={{ mt: 1, color: 'var(--text-muted)', lineHeight: 1.8 }}>
                     We typically respond within 1–2 business days. If your request is urgent, include that in your message.
-                  </Typography>
+                  </Typography></Box>
 
                   <Box sx={{ mt: 2.5 }}>
-                    <Typography sx={{ color: 'rgba(33, 203, 255, 0.95)', fontWeight: 950, fontSize: 14 }}>
+                    <Typography sx={{ color: 'var(--accent)', fontWeight: 950, fontSize: 14 }}>
                       Contact details
                     </Typography>
-                    <Typography sx={{ mt: 1.2, color: 'rgba(255,255,255,0.84)' }}>
-                      Email: <Box component="span" sx={{ fontWeight: 800 }}>hello@royalcare.org</Box>
+                    <Typography sx={{ mt: 1.2, color: 'var(--text-muted)' }}>
+                      Email: <Box component="span" sx={{ fontWeight: 800, color: 'var(--text)' }}>hello@royalcare.org</Box>
                     </Typography>
-                    <Typography sx={{ mt: 0.8, color: 'rgba(255,255,255,0.84)' }}>
-                      Phone: <Box component="span" sx={{ fontWeight: 800 }}>+1 (000) 123-4567</Box>
+                    <Typography sx={{ mt: 0.8, color: 'var(--text-muted)' }}>
+                      Phone: <Box component="span" sx={{ fontWeight: 800, color: 'var(--text)' }}>+1 (000) 123-4567</Box>
                     </Typography>
-                    <Typography sx={{ mt: 0.8, color: 'rgba(255,255,255,0.84)' }}>
-                      Location: <Box component="span" sx={{ fontWeight: 800 }}>Community Partnerships Office</Box>
+                    <Typography sx={{ mt: 0.8, color: 'var(--text-muted)' }}>
+                      Location: <Box component="span" sx={{ fontWeight: 800, color: 'var(--text)' }}>Community Partnerships Office</Box>
                     </Typography>
                   </Box>
                 </Paper>
@@ -99,60 +106,43 @@ const contact = () => {
                   sx={{
                     p: { xs: 2.5, md: 3 },
                     borderRadius: 4,
-                    border: '1px solid rgba(255,255,255,0.10)',
-                    background:
-                      'linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
+                    border: '1px solid rgba(15, 23, 42, 0.08)',
+                    background: 'rgba(255,255,255,0.96)',
                   }}
                 >
-                  <Typography sx={{ color: 'white', fontWeight: 950, fontSize: 18 }}>
+                  <Typography sx={{ color: 'var(--text)', fontWeight: 950, fontSize: 18 }}>
                     Send a message
                   </Typography>
 
                   <Box component="form" onSubmit={submit} sx={{ mt: 2 }}>
                     <Grid container spacing={2}>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          required
-                          label="Your name"
-                          value={form.name}
-                          onChange={(e) => setForm((s) => ({ ...s, name: e.target.value }))}
-                          fullWidth
-                          variant="outlined"
-                          InputLabelProps={{ style: { color: 'rgba(255,255,255,0.75)' } }}
-                          sx={{
-                            '& .MuiOutlinedInput-root': {
-                              bgcolor: 'rgba(255,255,255,0.03)',
-                              color: 'white',
-                              borderColor: 'rgba(255,255,255,0.14)',
-                            },
-                            '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.14)' },
-                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.22)' },
-                            '& .MuiInputBase-input': { color: 'white' },
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          required
-                          label="Email"
-                          type="email"
-                          value={form.email}
-                          onChange={(e) => setForm((s) => ({ ...s, email: e.target.value }))}
-                          fullWidth
-                          variant="outlined"
-                          InputLabelProps={{ style: { color: 'rgba(255,255,255,0.75)' } }}
-                          sx={{
-                            '& .MuiOutlinedInput-root': {
-                              bgcolor: 'rgba(255,255,255,0.03)',
-                              color: 'white',
-                              borderColor: 'rgba(255,255,255,0.14)',
-                            },
-                            '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.14)' },
-                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.22)' },
-                            '& .MuiInputBase-input': { color: 'white' },
-                          }}
-                        />
-                      </Grid>
+                      {[
+                        { label: 'Your name', value: form.name, field: 'name', type: 'text' },
+                        { label: 'Email', value: form.email, field: 'email', type: 'email' },
+                      ].map((field) => (
+                        <Grid item xs={12} sm={6} key={field.field}>
+                          <TextField
+                            required
+                            label={field.label}
+                            type={field.type}
+                            value={field.value}
+                            onChange={(e) => setForm((s) => ({ ...s, [field.field]: e.target.value }))}
+                            fullWidth
+                            variant="outlined"
+                            InputLabelProps={{ style: { color: 'rgba(15, 23, 42, 0.7)' } }}
+                            sx={{
+                              '& .MuiOutlinedInput-root': {
+                                bgcolor: 'rgba(243, 244, 246, 0.95)',
+                                color: 'var(--text)',
+                                borderColor: 'rgba(15, 23, 42, 0.12)',
+                              },
+                              '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(15, 23, 42, 0.12)' },
+                              '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(15, 23, 42, 0.2)' },
+                              '& .MuiInputBase-input': { color: 'var(--text)' },
+                            }}
+                          />
+                        </Grid>
+                      ))}
 
                       <Grid item xs={12}>
                         <TextField
@@ -161,16 +151,16 @@ const contact = () => {
                           onChange={(e) => setForm((s) => ({ ...s, topic: e.target.value }))}
                           fullWidth
                           variant="outlined"
-                          InputLabelProps={{ style: { color: 'rgba(255,255,255,0.75)' } }}
+                          InputLabelProps={{ style: { color: 'rgba(15, 23, 42, 0.7)' } }}
                           sx={{
                             '& .MuiOutlinedInput-root': {
-                              bgcolor: 'rgba(255,255,255,0.03)',
-                              color: 'white',
-                              borderColor: 'rgba(255,255,255,0.14)',
+                              bgcolor: 'rgba(243, 244, 246, 0.95)',
+                              color: 'var(--text)',
+                              borderColor: 'rgba(15, 23, 42, 0.12)',
                             },
-                            '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.14)' },
-                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.22)' },
-                            '& .MuiInputBase-input': { color: 'white' },
+                            '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(15, 23, 42, 0.12)' },
+                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(15, 23, 42, 0.2)' },
+                            '& .MuiInputBase-input': { color: 'var(--text)' },
                           }}
                         />
                       </Grid>
@@ -185,16 +175,16 @@ const contact = () => {
                           multiline
                           rows={5}
                           variant="outlined"
-                          InputLabelProps={{ style: { color: 'rgba(255,255,255,0.75)' } }}
+                          InputLabelProps={{ style: { color: 'rgba(15, 23, 42, 0.7)' } }}
                           sx={{
                             '& .MuiOutlinedInput-root': {
-                              bgcolor: 'rgba(255,255,255,0.03)',
-                              color: 'white',
-                              borderColor: 'rgba(255,255,255,0.14)',
+                              bgcolor: 'rgba(243, 244, 246, 0.95)',
+                              color: 'var(--text)',
+                              borderColor: 'rgba(15, 23, 42, 0.12)',
                             },
-                            '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.14)' },
-                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.22)' },
-                            '& .MuiInputBase-input': { color: 'white' },
+                            '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(15, 23, 42, 0.12)' },
+                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(15, 23, 42, 0.2)' },
+                            '& .MuiInputBase-input': { color: 'var(--text)' },
                           }}
                         />
                       </Grid>
@@ -207,24 +197,26 @@ const contact = () => {
                         sx={{
                           borderRadius: 999,
                           bgcolor:
-                            'linear-gradient(135deg, rgba(33, 203, 255, 0.95), rgba(140, 90, 255, 0.95))',
-                          boxShadow: '0 14px 40px rgba(110, 160, 255, 0.25)',
+                            'linear-gradient(135deg, rgba(236, 210, 74, 0.95), rgba(181, 138, 31, 0.95))',
+                          boxShadow: '0 14px 40px rgba(181, 138, 31, 0.16)',
+                          color: '#08101d',
                           '&:hover': {
                             bgcolor:
-                              'linear-gradient(135deg, rgba(33, 203, 255, 1), rgba(140, 90, 255, 1))',
+                              'linear-gradient(135deg, rgba(236, 210, 74, 1), rgba(181, 138, 31, 1))',
                           },
                         }}
                       >
                         Send message
                       </Button>
                       <Button
-                        href="/pillers"
+                        component={Link}
+                        to="/pillars"
                         sx={{
                           borderRadius: 999,
-                          color: 'rgba(255,255,255,0.92)',
-                          border: '1px solid rgba(255,255,255,0.16)',
-                          bgcolor: 'rgba(255,255,255,0.06)',
-                          '&:hover': { bgcolor: 'rgba(255,255,255,0.10)' },
+                          color: 'var(--text)',
+                          border: '1px solid rgba(15, 23, 42, 0.16)',
+                          bgcolor: 'rgba(243, 244, 246, 0.95)',
+                          '&:hover': { bgcolor: 'rgba(229, 231, 235, 0.95)' },
                         }}
                       >
                         Learn our pillars
@@ -249,6 +241,7 @@ const contact = () => {
         </Alert>
       </Snackbar>
     </Box>
+    </>
   )
 }
 

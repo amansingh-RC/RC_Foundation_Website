@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Container, Grid, Paper, Typography, Avatar } from '@mui/material'
 import AnimatedReveal from '../components/AnimatedReveal'
 import Section from '../components/Section'
+import { Link } from 'react-router-dom'
 
 const Legacy = () => {
   const milestones = [
@@ -14,18 +15,21 @@ const Legacy = () => {
     {
       name: 'Community Partner',
       role: 'Local Outreach Team',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
       quote:
         'Their approach is careful and consistent. The support is organized, respectful, and truly helpful.',
     },
     {
       name: 'Volunteer Coordinator',
       role: 'Skills & Mentorship',
+      avatar: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=400&q=80',
       quote:
         'Royal Care Foundation makes it easy for volunteers to contribute meaningfully and see real outcomes.',
     },
     {
       name: 'Beneficiary Advocate',
       role: 'Healthcare Navigation',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
       quote:
         'They help families understand options and access care with confidence. That changes everything.',
     },
@@ -36,14 +40,14 @@ const Legacy = () => {
       <Box sx={{ pt: { xs: 5, md: 7 }, pb: { xs: 4, md: 5 } }}>
         <Container maxWidth="lg">
           <AnimatedReveal animation="fadeUp">
-            <Typography sx={{ color: 'rgba(255,255,255,0.88)', fontWeight: 800 }} variant="overline">
+            <Typography sx={{ color: 'var(--accent)', fontWeight: 800 }} variant="overline">
               Legacy
             </Typography>
             <Typography
               variant="h2"
               sx={{
                 mt: 2,
-                color: 'white',
+                color: 'var(--text)',
                 fontWeight: 950,
                 letterSpacing: -1.1,
                 lineHeight: 1.04,
@@ -52,7 +56,7 @@ const Legacy = () => {
             >
               Built on trust, guided by outcomes.
             </Typography>
-            <Typography sx={{ mt: 2, color: 'rgba(255,255,255,0.78)', lineHeight: 1.8, maxWidth: 680 }}>
+            <Typography sx={{ mt: 2, color: 'var(--text-muted)', lineHeight: 1.8, maxWidth: 680 }}>
               Our story is shaped by communities, sustained through partnerships, and measured through tangible results.
               Here are a few milestones and reflections from those we support.
             </Typography>
@@ -74,9 +78,8 @@ const Legacy = () => {
                     sx={{
                       p: 3,
                       borderRadius: 4,
-                      border: '1px solid rgba(255,255,255,0.10)',
-                      background:
-                        'linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
+                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      background: 'rgba(255,255,255,0.96)',
                       height: '100%',
                       minHeight: 205,
                       position: 'relative',
@@ -89,23 +92,23 @@ const Legacy = () => {
                         inset: -120,
                         background:
                           idx === 0
-                            ? 'radial-gradient(circle at 25% 20%, rgba(33, 203, 255, 0.35), transparent 55%)'
+                            ? 'radial-gradient(circle at 25% 20%, rgba(236, 210, 74, 0.25), transparent 55%)'
                             : idx === 1
-                              ? 'radial-gradient(circle at 25% 20%, rgba(140, 90, 255, 0.35), transparent 55%)'
-                              : 'radial-gradient(circle at 25% 20%, rgba(70, 255, 200, 0.25), transparent 55%)',
+                              ? 'radial-gradient(circle at 25% 20%, rgba(181, 138, 31, 0.25), transparent 55%)'
+                              : 'radial-gradient(circle at 25% 20%, rgba(236, 210, 74, 0.2), transparent 55%)',
                         filter: 'blur(16px)',
                         opacity: 0.8,
                       }}
                     />
 
                     <Box sx={{ position: 'relative' }}>
-                      <Typography sx={{ color: 'white', fontWeight: 950, fontSize: 14 }}>
+                      <Typography sx={{ color: 'var(--accent)', fontWeight: 950, fontSize: 14 }}>
                         {m.year}
                       </Typography>
-                      <Typography sx={{ mt: 1, color: 'white', fontWeight: 950, fontSize: 20 }}>
+                      <Typography sx={{ mt: 1, color: 'var(--text)', fontWeight: 950, fontSize: 20 }}>
                         {m.title}
                       </Typography>
-                      <Typography sx={{ mt: 1.2, color: 'rgba(255,255,255,0.74)', lineHeight: 1.8 }}>
+                      <Typography sx={{ mt: 1.2, color: 'var(--text-muted)', lineHeight: 1.8 }}>
                         {m.desc}
                       </Typography>
                     </Box>
@@ -132,35 +135,34 @@ const Legacy = () => {
                     sx={{
                       p: 3,
                       borderRadius: 4,
-                      border: '1px solid rgba(255,255,255,0.10)',
-                      background:
-                        'linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
+                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      background: 'rgba(255,255,255,0.96)',
                       height: '100%',
                       minHeight: 250,
                     }}
                   >
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.2 }}>
                       <Avatar
+                        src={t.avatar}
                         sx={{
-                          bgcolor: 'linear-gradient(135deg, rgba(33, 203, 255, 0.6), rgba(140, 90, 255, 0.6))',
                           width: 42,
                           height: 42,
-                          color: 'white',
+                          bgcolor: 'rgba(15, 23, 42, 0.04)',
                           fontWeight: 900,
                         }}
                       >
                         {t.name.split(' ').map((x) => x[0]).slice(0, 2).join('')}
                       </Avatar>
                       <Box>
-                        <Typography sx={{ color: 'white', fontWeight: 950, fontSize: 16 }}>
+                        <Typography sx={{ color: 'var(--text)', fontWeight: 950, fontSize: 16 }}>
                           {t.name}
                         </Typography>
-                        <Typography sx={{ color: 'rgba(255,255,255,0.70)', fontSize: 13 }}>
+                        <Typography sx={{ color: 'var(--text-muted)', fontSize: 13 }}>
                           {t.role}
                         </Typography>
                       </Box>
                     </Box>
-                    <Typography sx={{ mt: 2, color: 'rgba(255,255,255,0.78)', lineHeight: 1.8 }}>
+                    <Typography sx={{ mt: 2, color: 'var(--text-muted)', lineHeight: 1.8 }}>
                       “{t.quote}”
                     </Typography>
                   </Paper>
@@ -179,23 +181,27 @@ const Legacy = () => {
               sx={{
                 p: { xs: 3, md: 4 },
                 borderRadius: 5,
-                border: '1px solid rgba(255,255,255,0.12)',
-                background:
-                  'linear-gradient(135deg, rgba(33, 203, 255, 0.18), rgba(140, 90, 255, 0.14))',
+                border: '1px solid rgba(15, 23, 42, 0.08)',
+                background: 'rgba(255,255,255,0.96)',
               }}
             >
-              <Typography sx={{ color: 'white', fontWeight: 950, fontSize: 22 }}>
+              <Typography sx={{ color: 'var(--text)', fontWeight: 950, fontSize: 22 }}>
                 Help shape the next chapter.
               </Typography>
-              <Typography sx={{ mt: 1.2, color: 'rgba(255,255,255,0.78)', lineHeight: 1.8 }}>
+              <Typography sx={{ mt: 1.2, color: 'var(--text-muted)', lineHeight: 1.8 }}>
                 Join us as a donor, volunteer, or long-term partner—so support can continue where it matters most.
               </Typography>
               <Box sx={{ mt: 2 }}>
-                <Typography component="a" href="/contact" sx={{
-                  color: 'rgba(33, 203, 255, 0.95)',
-                  fontWeight: 900,
-                  textDecoration: 'none',
-                }}>
+                <Typography
+                  component="a"
+                  component={Link}
+                  to="/contact"
+                  sx={{
+                    color: 'var(--accent)',
+                    fontWeight: 900,
+                    textDecoration: 'none',
+                  }}
+                >
                   Contact us →
                 </Typography>
               </Box>

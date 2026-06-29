@@ -6,50 +6,85 @@ import {
   Button,
   Grid,
   Paper,
-  Chip,
 } from '@mui/material'
 import { gsap } from 'gsap'
 import AnimatedReveal from '../components/AnimatedReveal'
 import Section from '../components/Section'
 import heroImg from '../assets/hero.png'
+import { Link } from 'react-router-dom'
 
-const StatCard = ({ value, label, iconBg }) => {
-  return (
-    <Paper
-      elevation={0}
+const PillarCard = ({ title, subtitle, accent }) => (
+  <Paper
+    elevation={0}
+    sx={{
+      position: 'relative',
+      borderRadius: 4,
+      overflow: 'hidden',
+      border: '1px solid rgba(15, 23, 42, 0.08)',
+      background: 'rgba(255,255,255,0.94)',
+      minHeight: 220,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+      p: 4,
+    }}
+  >
+    <Box
       sx={{
-        p: 3,
-        borderRadius: 3,
-        border: '1px solid rgba(255,255,255,0.10)',
-        background:
-          'linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
-        position: 'relative',
-        overflow: 'hidden',
+        position: 'absolute',
+        inset: 0,
+        background: accent,
+        opacity: 0.08,
       }}
-    >
-      <Box
+    />
+    <Box sx={{ position: 'relative' }}>
+      <Typography sx={{ color: 'var(--text)', fontWeight: 950, fontSize: 20 }}>{title}</Typography>
+      <Typography sx={{ mt: 1.5, color: 'rgba(15, 23, 42, 0.72)', lineHeight: 1.7 }}>
+        {subtitle}
+      </Typography>
+      <Button
+        component={Link}
+      to="/pillars"
+        size="small"
         sx={{
-          position: 'absolute',
-          inset: -40,
-          background: iconBg,
-          opacity: 0.35,
-          filter: 'blur(30px)',
-          transform: 'translate3d(0,0,0)',
+          mt: 3,
+          color: 'var(--accent)',
+          fontWeight: 700,
+          textTransform: 'none',
+          p: 0,
         }}
-      />
-      <Box sx={{ position: 'relative' }}>
-        <Typography sx={{ fontWeight: 950, fontSize: 30, color: 'white' }}>
-          {value}
-        </Typography>
-        <Typography sx={{ mt: 0.8, color: 'rgba(255,255,255,0.74)' }}>
-          {label}
-        </Typography>
-      </Box>
-    </Paper>
-  )
-}
+      >
+        Learn more →
+      </Button>
+    </Box>
+  </Paper>
+)
 
-const home = () => {
+const GalleryCard = ({ label }) => (
+  <Paper
+    elevation={0}
+    sx={{
+      borderRadius: 4,
+      overflow: 'hidden',
+      minHeight: 240,
+      border: '1px solid rgba(15, 23, 42, 0.08)',
+      background: 'rgba(255,255,255,0.94)',
+    }}
+  >
+    <Box
+      sx={{
+        height: 180,
+        background:
+          'linear-gradient(180deg, rgba(236,210,74,0.15), rgba(33,203,255,0.08))',
+      }}
+    />
+    <Box sx={{ p: 3 }}>
+      <Typography sx={{ color: 'var(--text)', fontWeight: 900 }}>{label}</Typography>
+    </Box>
+  </Paper>
+)
+
+const Home = () => {
   const heroRef = useRef(null)
 
   useEffect(() => {
@@ -66,21 +101,21 @@ const home = () => {
       gsap
         .timeline({ defaults: { ease: 'power3.out' } })
         .fromTo(
-          '.heroAccent',
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1.1, stagger: 0.12 },
+          '.heroTitle',
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 1.1 },
           0
         )
         .fromTo(
-          '.heroTitle',
-          { opacity: 0, y: 18 },
-          { opacity: 1, y: 0, duration: 1.0 },
+          '.heroSubtitle',
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 1.1 },
           0.15
         )
         .fromTo(
-          '.heroSubtitle',
-          { opacity: 0, y: 12 },
-          { opacity: 1, y: 0, duration: 0.9 },
+          '.heroActions',
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 1.1, stagger: 0.08 },
           0.25
         )
     }, el)
@@ -90,309 +125,264 @@ const home = () => {
 
   return (
     <Box>
-      {/* HERO */}
       <Box
         ref={heroRef}
         sx={{
           position: 'relative',
-          pt: { xs: 5, md: 7 },
-          pb: { xs: 6, md: 8 },
+          pt: { xs: 8, md: 10 },
+          pb: { xs: 8, md: 12 },
+          color: 'var(--text)',
+          backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.90), rgba(249,250,251,0.85)), url(${heroImg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
         }}
       >
-        <Container maxWidth="lg">
-          <Grid
-            container
-            spacing={{ xs: 3, md: 4 }}
-            alignItems="center"
-            justifyContent="space-between"
-          >
-            <Grid item xs={12} md={6}>
-              <AnimatedReveal animation="fadeUp">
-                <Box
-                  sx={{
-                    display: 'flex',
-                    gap: 1,
-                    alignItems: 'center',
-                    mb: 2,
-                  }}
-                >
-                  <Chip
-                    className="heroAccent"
-                    label="Nonprofit foundation"
-                    sx={{
-                      bgcolor: 'rgba(255,255,255,0.08)',
-                      border: '1px solid rgba(255,255,255,0.12)',
-                      color: 'rgba(255,255,255,0.9)',
-                      fontWeight: 700,
-                      px: 2,
-                    }}
-                  />
-                  <Chip
-                    className="heroAccent"
-                    label="Community-first impact"
-                    sx={{
-                      bgcolor: 'rgba(255,255,255,0.06)',
-                      border: '1px solid rgba(255,255,255,0.10)',
-                      color: 'rgba(255,255,255,0.85)',
-                      fontWeight: 700,
-                      px: 2,
-                    }}
-                  />
-                </Box>
-              </AnimatedReveal>
-
-              <AnimatedReveal animation="fadeUp" delay={0.05}>
-                <Typography
-                  className="heroTitle"
-                  variant="h2"
-                  sx={{
-                    color: 'white',
-                    fontWeight: 950,
-                    letterSpacing: -1.2,
-                    lineHeight: 1.02,
-                    fontSize: { xs: 36, md: 54 },
-                  }}
-                >
-                  Building brighter futures—
-                  <Box component="span" sx={{ color: 'rgba(33, 203, 255, 0.95)' }}>
-                    one life at a time
-                  </Box>
-                </Typography>
-              </AnimatedReveal>
-
-              <AnimatedReveal animation="fadeIn" delay={0.12}>
-                <Typography
-                  className="heroSubtitle"
-                  sx={{
-                    mt: 2,
-                    color: 'rgba(255,255,255,0.78)',
-                    fontSize: { xs: 16, md: 18 },
-                    maxWidth: 560,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  Royal Care Foundation helps underserved communities through education,
-                  healthcare support, and long-term care programs. Your support turns
-                  compassion into measurable change.
-                </Typography>
-              </AnimatedReveal>
-
-              <Box sx={{ mt: 3, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                <AnimatedReveal animation="scaleIn" delay={0.18}>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    href="/contact"
-                    sx={{
-                      borderRadius: 999,
-                      bgcolor:
-                        'linear-gradient(135deg, rgba(33, 203, 255, 0.95), rgba(140, 90, 255, 0.95))',
-                      boxShadow: '0 14px 40px rgba(110, 160, 255, 0.25)',
-                      '&:hover': {
-                        bgcolor:
-                          'linear-gradient(135deg, rgba(33, 203, 255, 1), rgba(140, 90, 255, 1))',
-                      },
-                    }}
-                  >
-                    Donate / Volunteer
-                  </Button>
-                </AnimatedReveal>
-                <AnimatedReveal animation="fadeUp" delay={0.22}>
-                  <Button
-                    size="large"
-                    href="/about"
-                    sx={{
-                      borderRadius: 999,
-                      color: 'rgba(255,255,255,0.9)',
-                      border: '1px solid rgba(255,255,255,0.16)',
-                      bgcolor: 'rgba(255,255,255,0.06)',
-                      '&:hover': {
-                        bgcolor: 'rgba(255,255,255,0.10)',
-                      },
-                    }}
-                  >
-                    Learn our mission
-                  </Button>
-                </AnimatedReveal>
-              </Box>
-
-              <Box sx={{ mt: 3.2 }}>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6}>
-                    <StatCard
-                      value="1,200+"
-                      label="Beneficiaries served"
-                      iconBg="linear-gradient(135deg, rgba(33, 203, 255, 0.9), rgba(33, 203, 255, 0.0))"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <StatCard
-                      value="45+"
-                      label="Community partners"
-                      iconBg="linear-gradient(135deg, rgba(140, 90, 255, 0.9), rgba(140, 90, 255, 0.0))"
-                    />
-                  </Grid>
-                </Grid>
-              </Box>
-            </Grid>
-
-            {/* Right side illustration */}
-            <Grid item xs={12} md={5}>
-              <AnimatedReveal animation="fadeUp" delay={0.08}>
-                <Box
-                  sx={{
-                    position: 'relative',
-                    borderRadius: 4,
-                    border: '1px solid rgba(255,255,255,0.12)',
-                    background:
-                      'linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
-                    overflow: 'hidden',
-                    p: { xs: 2, md: 3 },
-                    boxShadow: '0 22px 70px rgba(0,0,0,0.35)',
-                  }}
-                >
-                  <Box
-                    className="heroAccent"
-                    sx={{
-                      position: 'absolute',
-                      inset: -120,
-                      background:
-                        'radial-gradient(circle at 30% 30%, rgba(33, 203, 255, 0.35), transparent 55%), radial-gradient(circle at 80% 20%, rgba(140, 90, 255, 0.30), transparent 50%)',
-                      filter: 'blur(0px)',
-                      opacity: 0.9,
-                      pointerEvents: 'none',
-                    }}
-                  />
-
-                  <Box sx={{ position: 'relative' }}>
-                    <Box
-                      component="img"
-                      src={heroImg}
-                      alt="Foundation hero"
-                      sx={{
-                        width: '100%',
-                        height: 'auto',
-                        borderRadius: 3,
-                        border: '1px solid rgba(255,255,255,0.12)',
-                        background: 'rgba(0,0,0,0.2)',
-                      }}
-                    />
-
-                    <Grid container spacing={2} sx={{ mt: 2.2 }}>
-                      <Grid item xs={6}>
-                        <Paper
-                          elevation={0}
-                          sx={{
-                            p: 1.7,
-                            borderRadius: 3,
-                            textAlign: 'left',
-                            border: '1px solid rgba(255,255,255,0.12)',
-                            background: 'rgba(0,0,0,0.18)',
-                          }}
-                        >
-                          <Typography sx={{ color: 'rgba(255,255,255,0.9)', fontWeight: 900 }}>
-                            Education
-                          </Typography>
-                          <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: 13, mt: 0.5 }}>
-                            Scholarships & learning
-                          </Typography>
-                        </Paper>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Paper
-                          elevation={0}
-                          sx={{
-                            p: 1.7,
-                            borderRadius: 3,
-                            textAlign: 'left',
-                            border: '1px solid rgba(255,255,255,0.12)',
-                            background: 'rgba(0,0,0,0.18)',
-                          }}
-                        >
-                          <Typography sx={{ color: 'rgba(255,255,255,0.9)', fontWeight: 900 }}>
-                            Healthcare
-                          </Typography>
-                          <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: 13, mt: 0.5 }}>
-                            Access & essentials
-                          </Typography>
-                        </Paper>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Paper
-                          elevation={0}
-                          sx={{
-                            p: 1.8,
-                            borderRadius: 3,
-                            border: '1px solid rgba(255,255,255,0.12)',
-                            background: 'rgba(0,0,0,0.18)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            gap: 2,
-                          }}
-                        >
-                          <Typography sx={{ color: 'rgba(255,255,255,0.92)', fontWeight: 900 }}>
-                            Transparent impact
-                          </Typography>
-                          <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: 13 }}>
-                            Reporting & measurable outcomes
-                          </Typography>
-                        </Paper>
-                      </Grid>
-                    </Grid>
-                  </Box>
-                </Box>
-              </AnimatedReveal>
-            </Grid>
-          </Grid>
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            background: 'rgba(255,255,255,0.72)',
+          }}
+        />
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+          <Box sx={{ maxWidth: { xs: '100%', md: 620 } }}>
+            <Typography
+              sx={{
+                color: 'var(--accent)',
+                letterSpacing: 2,
+                textTransform: 'uppercase',
+                fontWeight: 700,
+                fontSize: 12,
+              }}
+            >
+              Royal Care Foundation
+            </Typography>
+            <Typography
+              className="heroTitle"
+              variant="h1"
+              sx={{
+                mt: 3,
+                fontFamily: 'Playfair Display, Georgia, serif',
+                fontWeight: 800,
+                lineHeight: 1.02,
+                fontSize: { xs: '2.9rem', md: '4.8rem' },
+                letterSpacing: '-0.05em',
+                color: 'var(--text)',
+              }}
+            >
+              A Promise of Care. A Legacy of Giving.
+            </Typography>
+            <Typography
+              className="heroSubtitle"
+              sx={{
+                mt: 4,
+                color: 'rgba(15,23,42,0.78)',
+                fontSize: { xs: 16, md: 18 },
+                maxWidth: 640,
+                lineHeight: 1.8,
+              }}
+            >
+              Royal Care Foundation draws its deepest inspiration from the values and vision of our beloved grandfather, Sha. Futarmalji Dalichandji Jain — a man revered for his humility, generosity, and unwavering commitment to service.
+            </Typography>
+            <Typography sx={{ mt: 3, color: 'var(--accent)', letterSpacing: 1.2 }}>
+              Royal Care Foundation – A Legacy of Service
+            </Typography>
+            <Box className="heroActions" sx={{ mt: 5, display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+              <Button
+                component={Link}
+      to="/about"
+                variant="contained"
+                sx={{
+                  borderRadius: 999,
+                  px: 4,
+                  py: 1.8,
+                  bgcolor: 'var(--accent)',
+                  color: '#03101b',
+                  fontWeight: 700,
+                  boxShadow: '0 18px 45px rgba(236,210,74,0.25)',
+                  '&:hover': { bgcolor: '#f4d451' },
+                }}
+              >
+                Read Full Story
+              </Button>
+              <Button
+                component={Link}
+                 to="/pillars"
+                variant="outlined"
+                sx={{
+                  borderRadius: 999,
+                  px: 4,
+                  py: 1.8,
+                  borderColor: 'rgba(15,23,42,0.18)',
+                  color: 'rgba(15,23,42,0.92)',
+                  textTransform: 'none',
+                  '&:hover': { borderColor: 'rgba(15,23,42,0.28)' },
+                }}
+              >
+                Our Pillars
+              </Button>
+            </Box>
+          </Box>
         </Container>
       </Box>
 
-      {/* Impact */}
-      <Section
-        title="Our impact framework"
-        subtitle="We focus on practical support, sustainable partnerships, and long-term community outcomes."
-      >
+      <Section sx={{ pt: { xs: 6, md: 10 }, pb: { xs: 4, md: 6 } }}>
+        <Container maxWidth="lg">
+          <Paper
+            elevation={0}
+            sx={{
+              borderRadius: 4,
+              p: { xs: 3, md: 5 },
+              border: '1px solid rgba(15,23,42,0.08)',
+              background: 'rgba(255,255,255,0.96)',
+            }}
+          >
+            <Typography sx={{ color: 'var(--accent)', fontWeight: 700, letterSpacing: 2, fontSize: 12 }}>
+              OUR INSPIRATION
+            </Typography>
+            <Typography sx={{ mt: 2.5, color: 'var(--text)', fontWeight: 900, fontSize: { xs: 22, md: 34 } }}>
+              "Helping others is a duty."
+            </Typography>
+            <Typography sx={{ mt: 1.75, color: 'var(--text-muted)', lineHeight: 1.75 }}>
+              Royal Care Foundation draws its deepest inspiration from the values and vision of our beloved grandfather, Sha. Futarmalji Dalichandji Jain — a man revered for his humility, generosity, and unwavering belief in seva (service to humanity). He lived by the conviction that true wealth lies in giving.
+            </Typography>
+
+            <Box sx={{ mt: 3.5, display: 'flex', gap: 3, alignItems: 'center' }}>
+              <Box
+                sx={{
+                  width: { xs: 64, md: 90 },
+                  height: { xs: 64, md: 90 },
+                  borderRadius: 3,
+                  background: 'rgba(15,23,42,0.06)',
+                  border: '1px solid rgba(15,23,42,0.08)',
+                }}
+              />
+              <Box>
+                <Typography sx={{ fontWeight: 900, fontSize: 16, color: 'var(--text)' }}>Sha. Futarmalji Dalichandji Jain</Typography>
+                <Typography sx={{ mt: 0.6, color: 'var(--text-muted)', letterSpacing: 1.05, fontSize: 13 }}>
+                  Founding Visionary
+                </Typography>
+              </Box>
+            </Box>
+          </Paper>
+        </Container>
+      </Section>
+
+      <Section sx={{ pt: { xs: 3, md: 6 }, pb: { xs: 6, md: 10 } }}>
+        <Container maxWidth="lg">
+          <Grid className=" grid grid-cols-1 md:grid-cols-3 gap-2.5">
+            <Grid item xs={12} md={4}>
+              <Paper
+                elevation={0}
+                sx={{
+                  borderRadius: 3,
+                  p: { xs: 2.5, md: 3 },
+                  background: 'rgba(255,255,255,0.96)',
+                  border: '1px solid rgba(15,23,42,0.08)',
+                  minHeight: 140,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                   transition: 'background 0.5s ease', // Smooth transition effect
+                  '&:hover': {
+                  background: 'linear-gradient(135deg, rgba(236,210,74,0.18), rgba(33,203,255,0.12))', // Changes to a solid tint on hover
+                 },
+                }}
+              >
+                <Typography sx={{ color: 'var(--text)', fontWeight: 900, fontSize: 18 }}>Our Mission</Typography>
+                <Typography sx={{ mt: 1.25, color: 'var(--text-muted)', lineHeight: 1.7 }}>
+                  Deliver impactful, transparent, and sustainable initiatives for community welfare.
+                </Typography>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} md={4}>
+              <Paper
+                elevation={0}
+                sx={{
+                  borderRadius: 3,
+                  p: { xs: 2.5, md: 3 },
+                  background: 'rgba(255,255,255,0.96)',
+                  border: '1px solid rgba(15,23,42,0.08)',
+                  minHeight: 140,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                   transition: 'background 0.5s ease', // Smooth transition effect
+                  '&:hover': {
+                  background: 'linear-gradient(135deg, rgba(236,210,74,0.18), rgba(33,203,255,0.12))', // Changes to a solid tint on hover
+                 },
+                }}
+              >
+                <Typography sx={{ color: 'var(--text)', fontWeight: 900, fontSize: 18 }}>Our Vision</Typography>
+                <Typography sx={{ mt: 1.25, color: 'var(--text-muted)', lineHeight: 1.7 }}>
+                  To create a compassionate society where every individual has the opportunity to live with dignity.
+                </Typography>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} md={4}>
+              <Paper
+                elevation={0}
+                sx={{
+                  borderRadius: 3,
+                  p: { xs: 2.5, md: 3 },
+                  background: 'rgba(255,255,255,0.96)',
+                  border: '1px solid rgba(15,23,42,0.08)',
+                  minHeight: 140,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  transition: 'background 0.5s ease', // Smooth transition effect
+                  '&:hover': {
+                  background: 'linear-gradient(135deg, rgba(236,210,74,0.18), rgba(33,203,255,0.12))', // Changes to a solid tint on hover
+                 },
+                }}
+              >
+                <Typography sx={{ color: 'var(--text)', fontWeight: 900, fontSize: 18 }}>10,000+ Lives Changed</Typography>
+                <Typography sx={{ mt: 1.25, color: 'var(--text-muted)', lineHeight: 1.7 }}>
+                  Through sustained programs and compassionate collaboration, we continue to reach families in need.
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Container>
+      </Section>
+
+      <Section title="Core Pillars of Change" subtitle="Our work is organized around these core impact areas.">
         <Container maxWidth="lg">
           <Grid container spacing={3}>
             {[
               {
-                t: 'Need-first approach',
-                d: 'We listen to communities and design programs around real, urgent needs.',
+                title: 'Livelihood & Rural Development',
+                subtitle: 'Strengthening local economies and farm families through sustainable support.',
+                accent: 'linear-gradient(135deg, rgba(236,210,74,0.3), rgba(33,203,255,0.12))',
               },
               {
-                t: 'Measurable outcomes',
-                d: 'We track progress with clear metrics and regular reporting.',
+                title: 'Health & Wellness',
+                subtitle: 'Improving healthcare access and support for vulnerable communities.',
+                accent: 'linear-gradient(135deg, rgba(33,203,255,0.25), rgba(140,90,255,0.14))',
               },
               {
-                t: 'Long-term care',
-                d: 'We continue support beyond immediate relief—so impact lasts.',
+                title: 'Women & Child Upliftment',
+                subtitle: 'Creating safe opportunities for women and young children to thrive.',
+                accent: 'linear-gradient(135deg, rgba(140,90,255,0.25), rgba(236,210,74,0.14))',
               },
-            ].map((x, idx) => (
-              <Grid item xs={12} md={4} key={x.t}>
-                <AnimatedReveal animation="fadeUp" delay={idx * 0.06}>
-                  <Paper
-                    elevation={0}
-                    sx={{
-                      p: 3,
-                      borderRadius: 4,
-                      border: '1px solid rgba(255,255,255,0.10)',
-                      background:
-                        'linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))',
-                      height: '100%',
-                      minHeight: 170,
-                    }}
-                  >
-                    <Typography sx={{ color: 'rgba(33, 203, 255, 0.95)', fontWeight: 900 }}>
-                      {String(idx + 1).padStart(2, '0')}
-                    </Typography>
-                    <Typography sx={{ mt: 1.2, color: 'white', fontWeight: 950, fontSize: 18 }}>
-                      {x.t}
-                    </Typography>
-                    <Typography sx={{ mt: 1, color: 'rgba(255,255,255,0.74)', lineHeight: 1.7 }}>
-                      {x.d}
-                    </Typography>
-                  </Paper>
+              {
+                title: 'Environment & Sustainability',
+                subtitle: 'Supporting eco-conscious programs that protect communities and land.',
+                accent: 'linear-gradient(135deg, rgba(33,203,255,0.2), rgba(70,255,200,0.18))',
+              },
+              {
+                title: 'Disaster Response & Relief',
+                subtitle: 'Delivering urgent aid and recovery resources when communities need them most.',
+                accent: 'linear-gradient(135deg, rgba(236,210,74,0.25), rgba(140,90,255,0.12))',
+              },
+            ].map((pillar) => (
+              <Grid item xs={12} md={6} key={pillar.title}>
+                <AnimatedReveal animation="fadeUp">
+                  <PillarCard {...pillar} />
                 </AnimatedReveal>
               </Grid>
             ))}
@@ -400,82 +390,22 @@ const home = () => {
         </Container>
       </Section>
 
-      {/* CTA */}
-      <Box sx={{ py: { xs: 4, md: 6 } }}>
+      <Section title="Gallery" subtitle="Our work in action.">
         <Container maxWidth="lg">
-          <AnimatedReveal animation="scaleIn">
-            <Paper
-              elevation={0}
-              sx={{
-                p: { xs: 3, md: 4 },
-                borderRadius: 5,
-                border: '1px solid rgba(255,255,255,0.12)',
-                background:
-                  'linear-gradient(135deg, rgba(33, 203, 255, 0.18), rgba(140, 90, 255, 0.14))',
-                overflow: 'hidden',
-                position: 'relative',
-              }}
-            >
-              <Box
-                sx={{
-                  position: 'absolute',
-                  inset: -200,
-                  background:
-                    'radial-gradient(circle at 30% 20%, rgba(33, 203, 255, 0.25), transparent 55%), radial-gradient(circle at 75% 40%, rgba(140, 90, 255, 0.22), transparent 50%)',
-                  pointerEvents: 'none',
-                }}
-              />
-              <Grid container spacing={3} alignItems="center" position="relative">
-                <Grid item xs={12} md={7}>
-                  <Typography sx={{ color: 'white', fontWeight: 950, fontSize: 26, letterSpacing: -0.6 }}>
-                    Ready to support compassionate, community-first impact?
-                  </Typography>
-                  <Typography sx={{ mt: 1.2, color: 'rgba(255,255,255,0.78)', lineHeight: 1.7 }}>
-                    Whether you donate or volunteer, your contribution helps us deliver resources with dignity.
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} md={5}>
-                  <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: { xs: 'flex-start', md: 'flex-end' } }}>
-                    <Button
-                      variant="contained"
-                      href="/contact"
-                      sx={{
-                        borderRadius: 999,
-                        bgcolor:
-                          'linear-gradient(135deg, rgba(33, 203, 255, 0.95), rgba(140, 90, 255, 0.95))',
-                        boxShadow: '0 14px 40px rgba(110, 160, 255, 0.25)',
-                        '&:hover': {
-                          bgcolor:
-                            'linear-gradient(135deg, rgba(33, 203, 255, 1), rgba(140, 90, 255, 1))',
-                        },
-                      }}
-                    >
-                      Contact us
-                    </Button>
-                    <Button
-                      href="/pillers"
-                      sx={{
-                        borderRadius: 999,
-                        color: 'rgba(255,255,255,0.9)',
-                        border: '1px solid rgba(255,255,255,0.16)',
-                        bgcolor: 'rgba(255,255,255,0.06)',
-                        '&:hover': {
-                          bgcolor: 'rgba(255,255,255,0.10)',
-                        },
-                      }}
-                    >
-                      Explore pillars
-                    </Button>
-                  </Box>
-                </Grid>
+          <Grid container spacing={3}>
+            {['Health & Wellness', 'Education access', 'Disaster Response & Relief'].map((label) => (
+              <Grid item xs={12} md={4} key={label}>
+                <AnimatedReveal animation="fadeUp">
+                  <GalleryCard label={label} />
+                </AnimatedReveal>
               </Grid>
-            </Paper>
-          </AnimatedReveal>
+            ))}
+          </Grid>
         </Container>
-      </Box>
+      </Section>
     </Box>
   )
 }
 
-export default home
+export default Home
 

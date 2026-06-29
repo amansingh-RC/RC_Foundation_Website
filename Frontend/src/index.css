@@ -1,30 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --bg0: #050f17;
-  --bg1: #061a24;
-  --text: rgba(255, 255, 255, 0.92);
+  color-scheme: light;
+  --bg-dark: #f4f7fb;
+  --bg-panel: rgba(255, 255, 255, 0.92);
+  --text: #1f2937;
+  --text-muted: rgba(75, 85, 99, 0.75);
+  --border: rgba(15, 23, 42, 0.08);
+  --accent: #b58a1f;
+  --accent-strong: #d4b43f;
+  --accent-soft: rgba(236, 210, 74, 0.16);
+  --shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
 }
 
-html,
-body {
-  height: 100%;
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  min-height: 100%;
+  font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(1200px 700px at 15% 10%, rgba(33, 203, 255, 0.18), transparent 55%),
-    radial-gradient(900px 600px at 85% 15%, rgba(140, 90, 255, 0.18), transparent 55%),
-    linear-gradient(180deg, var(--bg0), var(--bg1));
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
-    "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(circle at 10% 12%, rgba(236, 210, 74, 0.12), transparent 18%),
+    radial-gradient(circle at 92% 8%, rgba(33, 203, 255, 0.08), transparent 22%),
+    linear-gradient(180deg, #f9fafb 0%, #eef5fb 45%, #f8fafc 100%);
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
 * {
   box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(236, 210, 74, 0.25);
+  color: #04111f;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 .appRoot {
@@ -37,26 +73,30 @@ body {
   flex: 1;
 }
 
-a {
-  color: inherit;
+.glass-card {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow);
 }
 
-/* Let GSAP/transforms be smoother */
-[data-animate='true'] {
-  will-change: transform, opacity;
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.12), transparent);
+  margin: 32px 0;
 }
 
-/* Force dark UI across MUI components */
-.MuiPaper-root,
-.MuiTypography-root,
-.MuiButton-root,
-.MuiInputBase-root,
-.MuiOutlinedInput-root {
-  color: inherit;
+.lux-heading {
+  font-family: 'Playfair Display', ui-serif, Georgia, 'Times New Roman', Times, serif;
+  letter-spacing: -0.02em;
+  color: #111827;
 }
 
-.MuiAppBar-root {
-  color: #fff;
+.lux-text {
+  color: var(--text-muted);
 }
+
 
 

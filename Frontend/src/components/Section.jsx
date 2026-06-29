@@ -26,7 +26,7 @@ const Section = ({
                 sx={{
                   fontWeight: 900,
                   letterSpacing: -0.5,
-                  color: 'white',
+                  color: 'var(--text)',
                 }}
               >
                 {title}
@@ -34,7 +34,7 @@ const Section = ({
             )}
             {subtitle && (
               <Typography
-                sx={{ mt: 1.25, color: 'rgba(255,255,255,0.78)', maxWidth: 720, mx: align === 'center' ? 'auto' : 0 }}
+                sx={{ mt: 1.25, color: 'var(--text-muted)', maxWidth: 720, mx: align === 'center' ? 'auto' : 0 }}
               >
                 {subtitle}
               </Typography>

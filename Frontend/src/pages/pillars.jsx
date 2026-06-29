@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Container, Grid, Paper, Typography, Button } from '@mui/material'
 import AnimatedReveal from '../components/AnimatedReveal'
 import Section from '../components/Section'
+import { Link } from 'react-router-dom'
 
 const PillarCard = ({ title, description, highlight }) => {
   return (
@@ -10,9 +11,8 @@ const PillarCard = ({ title, description, highlight }) => {
       sx={{
         p: 3,
         borderRadius: 4,
-        border: '1px solid rgba(255,255,255,0.10)',
-        background:
-          'linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
+        border: '1px solid rgba(15, 23, 42, 0.08)',
+        background: 'rgba(255,255,255,0.96)',
         position: 'relative',
         overflow: 'hidden',
         height: '100%',
@@ -23,28 +23,29 @@ const PillarCard = ({ title, description, highlight }) => {
           position: 'absolute',
           inset: -120,
           background: highlight,
-          opacity: 0.35,
+          opacity: 0.18,
           filter: 'blur(14px)',
           pointerEvents: 'none',
         }}
       />
       <Box sx={{ position: 'relative' }}>
-        <Typography sx={{ color: 'white', fontWeight: 950, fontSize: 20 }}>
+        <Typography sx={{ color: 'var(--text)', fontWeight: 950, fontSize: 20 }}>
           {title}
         </Typography>
-        <Typography sx={{ mt: 1.2, color: 'rgba(255,255,255,0.74)', lineHeight: 1.8 }}>
+        <Typography sx={{ mt: 1.2, color: 'var(--text-muted)', lineHeight: 1.8 }}>
           {description}
         </Typography>
         <Box sx={{ mt: 2.2 }}>
           <Button
-            href="/contact"
+            component={Link}
+            to="/contact"
             variant="outlined"
             sx={{
-              borderColor: 'rgba(255,255,255,0.18)',
-              color: 'rgba(255,255,255,0.92)',
+              borderColor: 'rgba(15, 23, 42, 0.18)',
+              color: 'var(--text)',
               borderRadius: 999,
               px: 2,
-              '&:hover': { borderColor: 'rgba(255,255,255,0.28)', bgcolor: 'rgba(255,255,255,0.06)' },
+              '&:hover': { borderColor: 'rgba(15, 23, 42, 0.28)', bgcolor: 'rgba(243, 244, 246, 0.95)' },
             }}
           >
             Get involved
@@ -55,25 +56,25 @@ const PillarCard = ({ title, description, highlight }) => {
   )
 }
 
-const pillers = () => {
+const Pillars = () => {
   const pillars = [
     {
       title: 'Education access',
       description: 'Scholarships, learning resources, and mentorship pathways for students who need a boost.',
       highlight:
-        'radial-gradient(circle at 20% 20%, rgba(33, 203, 255, 0.55), transparent 50%), radial-gradient(circle at 80% 30%, rgba(33, 203, 255, 0.25), transparent 55%)',
+        'radial-gradient(circle at 20% 20%, rgba(236, 210, 74, 0.3), transparent 50%), radial-gradient(circle at 80% 30%, rgba(181, 138, 31, 0.18), transparent 55%)',
     },
     {
       title: 'Healthcare support',
       description: 'Essential care and navigation assistance—so families can access services with confidence.',
       highlight:
-        'radial-gradient(circle at 25% 20%, rgba(140, 90, 255, 0.55), transparent 50%), radial-gradient(circle at 75% 35%, rgba(140, 90, 255, 0.25), transparent 55%)',
+        'radial-gradient(circle at 25% 20%, rgba(236, 210, 74, 0.3), transparent 50%), radial-gradient(circle at 75% 35%, rgba(181, 138, 31, 0.18), transparent 55%)',
     },
     {
       title: 'Long-term community care',
       description: 'Sustained programs that help communities recover, rebuild, and thrive over time.',
       highlight:
-        'radial-gradient(circle at 25% 20%, rgba(70, 255, 200, 0.40), transparent 55%), radial-gradient(circle at 85% 35%, rgba(33, 203, 255, 0.25), transparent 55%)',
+        'radial-gradient(circle at 25% 20%, rgba(236, 210, 74, 0.25), transparent 55%), radial-gradient(circle at 85% 35%, rgba(181, 138, 31, 0.14), transparent 55%)',
     },
   ]
 
@@ -82,14 +83,14 @@ const pillers = () => {
       <Box sx={{ pt: { xs: 5, md: 7 }, pb: { xs: 4, md: 5 } }}>
         <Container maxWidth="lg">
           <AnimatedReveal animation="fadeUp">
-            <Typography sx={{ color: 'rgba(255,255,255,0.88)', fontWeight: 800 }} variant="overline">
+            <Typography sx={{ color: 'var(--accent)', fontWeight: 800 }} variant="overline">
               Our Pillars
             </Typography>
             <Typography
               variant="h2"
               sx={{
                 mt: 2,
-                color: 'white',
+                color: 'var(--text)',
                 fontWeight: 950,
                 letterSpacing: -1.1,
                 lineHeight: 1.04,
@@ -98,7 +99,7 @@ const pillers = () => {
             >
               Three pillars. One mission.
             </Typography>
-            <Typography sx={{ mt: 2, color: 'rgba(255,255,255,0.78)', lineHeight: 1.8, maxWidth: 650 }}>
+            <Typography sx={{ mt: 2, color: 'var(--text-muted)', lineHeight: 1.8, maxWidth: 650 }}>
               We focus resources where they create the strongest, most durable results—supported by partnership
               and measurable outcomes.
             </Typography>
@@ -147,20 +148,19 @@ const pillers = () => {
                     sx={{
                       p: 3,
                       borderRadius: 4,
-                      border: '1px solid rgba(255,255,255,0.10)',
-                      background:
-                        'linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))',
+                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      background: 'rgba(255,255,255,0.94)',
                       height: '100%',
                       minHeight: 185,
                     }}
                   >
-                    <Typography sx={{ color: 'rgba(33, 203, 255, 0.95)', fontWeight: 950, fontSize: 14 }}>
+                    <Typography sx={{ color: 'var(--accent)', fontWeight: 950, fontSize: 14 }}>
                       Step {idx + 1}
                     </Typography>
-                    <Typography sx={{ mt: 1, color: 'white', fontWeight: 950, fontSize: 20 }}>
+                    <Typography sx={{ mt: 1, color: 'var(--text)', fontWeight: 950, fontSize: 20 }}>
                       {x.t}
                     </Typography>
-                    <Typography sx={{ mt: 1.2, color: 'rgba(255,255,255,0.74)', lineHeight: 1.8 }}>
+                    <Typography sx={{ mt: 1.2, color: 'var(--text-muted)', lineHeight: 1.8 }}>
                       {x.d}
                     </Typography>
                   </Paper>
@@ -174,5 +174,5 @@ const pillers = () => {
   )
 }
 
-export default pillers
+export default Pillars
 

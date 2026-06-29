@@ -11,14 +11,14 @@ const about = () => {
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} md={7}>
               <AnimatedReveal animation="fadeUp">
-                <Typography sx={{ color: 'rgba(255,255,255,0.9)', fontWeight: 800 }} variant="overline">
+                <Typography sx={{ color: 'var(--accent)', fontWeight: 800 }} variant="overline">
                   About the Foundation
                 </Typography>
                 <Typography
                   variant="h2"
                   sx={{
                     mt: 2,
-                    color: 'white',
+                    color: 'var(--text)',
                     fontWeight: 950,
                     letterSpacing: -1.2,
                     lineHeight: 1.02,
@@ -27,7 +27,7 @@ const about = () => {
                 >
                   Compassionate support designed for lasting change.
                 </Typography>
-                <Typography sx={{ mt: 2, color: 'rgba(255,255,255,0.78)', lineHeight: 1.8, maxWidth: 620 }}>
+                <Typography sx={{ mt: 2, color: 'var(--text-muted)', lineHeight: 1.8, maxWidth: 620 }}>
                   Royal Care Foundation exists to remove barriers to education and healthcare while strengthening
                   community resilience. We work with local partners, listen deeply, and measure impact over time.
                 </Typography>
@@ -38,11 +38,12 @@ const about = () => {
                       <Chip
                         label={t}
                         sx={{
-                          bgcolor: 'rgba(255,255,255,0.06)',
-                          border: '1px solid rgba(255,255,255,0.12)',
-                          color: 'rgba(255,255,255,0.88)',
+                          bgcolor: 'var(--accent-soft)',
+                          border: '1px solid rgba(181, 138, 31, 0.18)',
+                          color: 'var(--text)',
                           fontWeight: 700,
                           px: 1.5,
+                          py: 0.8,
                         }}
                       />
                     </AnimatedReveal>
@@ -56,38 +57,32 @@ const about = () => {
                 <Paper
                   elevation={0}
                   sx={{
-                    p: 3,
                     borderRadius: 4,
-                    border: '1px solid rgba(255,255,255,0.12)',
-                    background:
-                      'linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
+                    border: '1px solid rgba(15, 23, 42, 0.08)',
+                    background: 'rgba(255,255,255,0.96)',
                     overflow: 'hidden',
-                    position: 'relative',
                   }}
                 >
                   <Box
-                    sx={{
-                      position: 'absolute',
-                      inset: -160,
-                      background:
-                        'radial-gradient(circle at 30% 20%, rgba(33, 203, 255, 0.24), transparent 55%), radial-gradient(circle at 75% 40%, rgba(140, 90, 255, 0.22), transparent 50%)',
-                      pointerEvents: 'none',
-                    }}
+                    component="img"
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+                    alt="Community outreach"
+                    sx={{ width: '100%', height: 280, objectFit: 'cover' }}
                   />
 
-                  <Box sx={{ position: 'relative' }}>
-                    <Typography sx={{ color: 'white', fontWeight: 950, fontSize: 20 }}>
+                  <Box sx={{ position: 'relative', p: 3 }}>
+                    <Typography sx={{ color: 'var(--accent)', fontWeight: 950, fontSize: 20 }}>
                       Our mission
                     </Typography>
-                    <Typography sx={{ mt: 1, color: 'rgba(255,255,255,0.78)', lineHeight: 1.8 }}>
+                    <Typography sx={{ mt: 1, color: 'var(--text-muted)', lineHeight: 1.8 }}>
                       Enable individuals and communities to thrive through education, accessible healthcare,
                       and long-term support.
                     </Typography>
 
-                    <Typography sx={{ mt: 3, color: 'white', fontWeight: 950, fontSize: 20 }}>
+                    <Typography sx={{ mt: 3, color: 'var(--accent)', fontWeight: 950, fontSize: 20 }}>
                       Our vision
                     </Typography>
-                    <Typography sx={{ mt: 1, color: 'rgba(255,255,255,0.78)', lineHeight: 1.8 }}>
+                    <Typography sx={{ mt: 1, color: 'var(--text-muted)', lineHeight: 1.8 }}>
                       A world where opportunity is reachable, needs are addressed early, and impact is durable.
                     </Typography>
                   </Box>
@@ -137,17 +132,16 @@ const about = () => {
                     sx={{
                       p: 3,
                       borderRadius: 4,
-                      border: '1px solid rgba(255,255,255,0.10)',
-                      background:
-                        'linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))',
+                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      background: 'rgba(255,255,255,0.94)',
                       height: '100%',
                       minHeight: 165,
                     }}
                   >
-                    <Typography sx={{ color: 'white', fontWeight: 950, fontSize: 18 }}>
+                    <Typography sx={{ color: 'var(--text)', fontWeight: 950, fontSize: 18 }}>
                       {x.t}
                     </Typography>
-                    <Typography sx={{ mt: 1.2, color: 'rgba(255,255,255,0.74)', lineHeight: 1.8 }}>
+                    <Typography sx={{ mt: 1.2, color: 'var(--text-muted)', lineHeight: 1.8 }}>
                       {x.d}
                     </Typography>
                   </Paper>
@@ -177,19 +171,18 @@ const about = () => {
                     sx={{
                       p: 3,
                       borderRadius: 4,
-                      border: '1px solid rgba(255,255,255,0.10)',
-                      background:
-                        'linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
+                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      background: 'rgba(255,255,255,0.94)',
                       height: '100%',
                     }}
                   >
-                    <Typography sx={{ color: 'rgba(33, 203, 255, 0.95)', fontWeight: 950, fontSize: 14 }}>
+                    <Typography sx={{ color: 'var(--accent)', fontWeight: 950, fontSize: 14 }}>
                       {x.role}
                     </Typography>
-                    <Typography sx={{ mt: 1, color: 'white', fontWeight: 950, fontSize: 20 }}>
+                    <Typography sx={{ mt: 1, color: 'var(--text)', fontWeight: 950, fontSize: 20 }}>
                       {x.name}
                     </Typography>
-                    <Typography sx={{ mt: 1.2, color: 'rgba(255,255,255,0.74)', lineHeight: 1.8 }}>
+                    <Typography sx={{ mt: 1.2, color: 'var(--text-muted)', lineHeight: 1.8 }}>
                       We coordinate resources and ensure every initiative aligns with our mission.
                     </Typography>
                   </Paper>
