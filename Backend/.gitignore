@@ -1,0 +1,3 @@
+node_modules/
+# local data backups (legacy JSON store)
+data/backups/

@@ -4,19 +4,27 @@ A small backend + admin panel for editing every section of your six pages
 (Home, About, Contact, Gallery, Legacy, Pillars) and each page's SEO tags,
 without touching code.
 
-No database setup required — content lives in a JSON file on disk
-(`data/content.json`), and every save writes a timestamped backup to
-`data/backups/` first, so nothing you do here is destructive.
+Content is stored in **PostgreSQL** (via `pg`, no ORM). Each page's `content`
+and `seo` live in JSONB columns, and every save first writes a `page_revisions`
+snapshot, so nothing you do here is destructive. The initial content is seeded
+from `data/content.json` (kept in the repo as the seed source of truth).
 
 ## 1. Run it
 
 ```bash
-cd royal-care-cms
+cd Backend
 npm install
 cp .env.example .env
 ```
 
-Open `.env` and set a real `ADMIN_PASSWORD` and `JWT_SECRET`, then:
+Open `.env` and set:
+
+- `DATABASE_URL` — your local PostgreSQL connection string. Create the database
+  first, e.g. `createdb royal_care` (or via psql: `CREATE DATABASE royal_care;`).
+- `ADMIN_PASSWORD` and `JWT_SECRET` — a real password and a long random secret.
+
+Then just start it — **tables are created and content is seeded automatically on
+first boot** (no migration step):
 
 ```bash
 npm start
@@ -26,6 +34,16 @@ npm start
 - API:         **http://localhost:4000/api/pages**
 
 Log in with the password you set in `.env`.
+
+### Database schema (auto-created)
+
+| Table              | Purpose                                                          |
+|--------------------|------------------------------------------------------------------|
+| `pages`            | One row per page (`slug`, `label`, `content` JSONB, `seo` JSONB) |
+| `page_revisions`   | Snapshot written before every save (non-destructive history)     |
+| `contact_messages` | Submissions from the public Contact form                         |
+
+`npm run db:seed` re-loads / resets all page content back to the JSON defaults.
 
 ## 2. What you can edit
 
@@ -87,6 +105,9 @@ deploy this CMS (defaults to `http://localhost:4000` for local dev).
 | GET    | `/api/pages`           | —    | All pages' content + SEO |
 | GET    | `/api/pages/:slug`     | —    | One page's content + SEO |
 | PUT    | `/api/pages/:slug`     | Bearer token | Update `{ content, seo }` |
+| POST   | `/api/contact`         | —    | Submit `{ name, email, message }` from the site form |
+| GET    | `/api/contact`         | Bearer token | List all contact messages (admin) |
+| PATCH  | `/api/contact/:id`     | Bearer token | Mark a message `{ read }` |
 
 `GET` routes are public on purpose — your live site needs to read content
 without anyone logging in. `PUT` requires the admin token from `/login`.

@@ -11,11 +11,15 @@
     activePageTitle: document.getElementById('activePageTitle'),
     contentPanel: document.getElementById('contentPanel'),
     seoPanel: document.getElementById('seoPanel'),
+    messagesPanel: document.getElementById('messagesPanel'),
     saveBtn: document.getElementById('saveBtn'),
     saveStatus: document.getElementById('saveStatus'),
     logoutBtn: document.getElementById('logoutBtn'),
     toast: document.getElementById('toast'),
     tabs: document.querySelectorAll('.tab'),
+    tabsBar: document.getElementById('tabsBar'),
+    messagesNav: document.getElementById('messagesNav'),
+    unreadBadge: document.getElementById('unreadBadge'),
   };
 
   let token = localStorage.getItem('rcf_admin_token') || null;
@@ -23,6 +27,8 @@
   let dirty = {};         // slug -> bool
   let activeSlug = null;
   let activeTab = 'content';
+  let mode = 'page';      // 'page' | 'messages'
+  let messages = [];
 
   // ---------------- Schema: describes editable fields per page ----------------
   const SCHEMA = {
@@ -224,6 +230,11 @@
     els.loginScreen.hidden = false;
   });
 
+  els.messagesNav.addEventListener('click', async () => {
+    await loadMessages();
+    selectMessages();
+  });
+
   async function boot() {
     try {
       pages = await api('/pages');
@@ -235,6 +246,7 @@
     els.loginScreen.hidden = true;
     els.app.hidden = false;
     renderNav();
+    loadMessages();
     const firstSlug = Object.keys(pages)[0];
     selectPage(activeSlug && pages[activeSlug] ? activeSlug : firstSlug);
   }
@@ -252,12 +264,112 @@
   }
 
   function selectPage(slug) {
+    mode = 'page';
     activeSlug = slug;
     els.activeSlugLabel.textContent = slug.toUpperCase();
     els.activePageTitle.textContent = pages[slug].label || slug;
+    // restore page editing UI
+    els.tabsBar.hidden = false;
+    els.saveBtn.hidden = false;
+    els.messagesPanel.hidden = true;
+    els.contentPanel.hidden = activeTab !== 'content';
+    els.seoPanel.hidden = activeTab !== 'seo';
+    els.messagesNav.classList.remove('active');
     renderNav();
     renderContentPanel();
     renderSeoPanel();
+  }
+
+  // ---------------- Messages ----------------
+  async function loadMessages() {
+    try {
+      messages = await api('/contact');
+      const unread = messages.filter((m) => !m.read).length;
+      els.unreadBadge.textContent = unread;
+      els.unreadBadge.hidden = unread === 0;
+    } catch (err) {
+      // ignore badge errors (e.g. not logged in yet)
+    }
+  }
+
+  function selectMessages() {
+    mode = 'messages';
+    activeSlug = null;
+    els.activeSlugLabel.textContent = 'INBOX';
+    els.activePageTitle.textContent = 'Messages';
+    els.tabsBar.hidden = true;
+    els.saveBtn.hidden = true;
+    els.saveStatus.textContent = '';
+    els.contentPanel.hidden = true;
+    els.seoPanel.hidden = true;
+    els.messagesPanel.hidden = false;
+    els.messagesNav.classList.add('active');
+    renderNav();
+    renderMessages();
+  }
+
+  function formatDate(iso) {
+    const d = new Date(iso);
+    if (isNaN(d)) return '';
+    return d.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+  }
+
+  function renderMessages() {
+    els.messagesPanel.innerHTML = '';
+    if (!messages.length) {
+      const empty = document.createElement('div');
+      empty.className = 'msg-empty';
+      empty.textContent = 'No messages yet. Submissions from the site’s Contact form will appear here.';
+      els.messagesPanel.appendChild(empty);
+      return;
+    }
+
+    messages.forEach((m) => {
+      const card = document.createElement('div');
+      card.className = 'msg-card' + (m.read ? '' : ' unread');
+
+      const head = document.createElement('div');
+      head.className = 'msg-head';
+      head.innerHTML =
+        `<div><span class="msg-name">${escapeHtml(m.name)}</span> ` +
+        `<a class="msg-email" href="mailto:${escapeHtml(m.email)}">${escapeHtml(m.email)}</a></div>` +
+        `<span class="msg-date">${formatDate(m.createdAt)}</span>`;
+      card.appendChild(head);
+
+      const body = document.createElement('p');
+      body.className = 'msg-body';
+      body.textContent = m.message;
+      card.appendChild(body);
+
+      const actions = document.createElement('div');
+      actions.className = 'msg-actions';
+      const toggle = document.createElement('button');
+      toggle.className = 'btn btn-line';
+      toggle.type = 'button';
+      toggle.textContent = m.read ? 'Mark as unread' : 'Mark as read';
+      toggle.addEventListener('click', async () => {
+        try {
+          const updated = await api(`/contact/${m.id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({ read: !m.read }),
+          });
+          m.read = updated.read;
+          renderMessages();
+          loadMessages();
+        } catch (err) {
+          showToast(err.message, true);
+        }
+      });
+      actions.appendChild(toggle);
+      card.appendChild(actions);
+
+      els.messagesPanel.appendChild(card);
+    });
+  }
+
+  function escapeHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, (c) =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
   function markDirty() {

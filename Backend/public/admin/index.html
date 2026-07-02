@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Royal Care Foundation — Content Admin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -34,6 +34,10 @@
         </div>
       </div>
       <nav id="pageNav" class="page-nav"></nav>
+      <div class="nav-divider"></div>
+      <div id="messagesNav" class="page-nav-item messages-nav">
+        <span>✉ Messages</span><span class="badge" id="unreadBadge" hidden>0</span>
+      </div>
       <button id="logoutBtn" class="btn btn-ghost btn-block logout-btn">Sign out</button>
     </aside>
 
@@ -49,13 +53,14 @@
         </div>
       </header>
 
-      <div class="tabs">
+      <div class="tabs" id="tabsBar">
         <button class="tab active" data-tab="content">Content</button>
         <button class="tab" data-tab="seo">SEO tags</button>
       </div>
 
       <div id="contentPanel" class="panel"></div>
       <div id="seoPanel" class="panel" hidden></div>
+      <div id="messagesPanel" class="panel" hidden></div>
     </main>
   </div>
 

@@ -1,17 +1,19 @@
 {
   "name": "royal-care-cms",
   "version": "1.0.0",
-  "description": "Backend CMS for the Royal Care Foundation site — edit page section content and SEO tags through an admin panel.",
+  "description": "Backend CMS for the Royal Care Foundation site — edit page section content and SEO tags through an admin panel, backed by PostgreSQL.",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "db:seed": "node src/seed.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1"
   }
 }
