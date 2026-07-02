@@ -194,7 +194,7 @@
         "submitLabel": "Send message",
         "secondaryCtaLabel": "Learn our pillars",
         "secondaryCtaLink": "/pillars",
-        "successMessage": "Message sent! (Demo) We'll reach out shortly."
+        "successMessage": "Message sent! We'll reach out shortly."
       }
     }
   },

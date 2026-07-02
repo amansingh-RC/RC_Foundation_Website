@@ -1,16 +1,7 @@
 import { useEffect, useState } from 'react'
 
-// Point this at your running CMS server (see README.md for setup).
-// In production, set this via an environment variable instead of hardcoding it.
 const CMS_BASE_URL = process.env.REACT_APP_CMS_URL || 'http://localhost:4000'
 
-/**
- * Fetches a single page's editable content + SEO tags from the CMS.
- *
- * const { content, seo, loading, error } = usePageContent('home')
- * if (loading) return <LoadingState />
- * <Typography>{content.hero.title}</Typography>
- */
 export function usePageContent(slug) {
   const [state, setState] = useState({ content: null, seo: null, loading: true, error: null })
 

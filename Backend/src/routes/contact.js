@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../db');
 const { requireAuth } = require('../auth');
+const { sendContactNotification } = require('../mailer');
 
 // Public: submit a contact message (from the site's Contact form)
 router.post('/', async (req, res) => {
@@ -9,11 +10,16 @@ router.post('/', async (req, res) => {
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Name, email, and message are all required.' });
   }
+  const cleanName = String(name).slice(0, 200);
+  const cleanEmail = String(email).slice(0, 200);
+  const cleanMessage = String(message).slice(0, 5000);
   try {
     const { rows } = await pool.query(
       'INSERT INTO contact_messages (name, email, message) VALUES ($1, $2, $3) RETURNING id',
-      [String(name).slice(0, 200), String(email).slice(0, 200), String(message).slice(0, 5000)]
+      [cleanName, cleanEmail, cleanMessage]
     );
+    // Notify admin by email (non-blocking: message is already saved even if email fails)
+    sendContactNotification({ name: cleanName, email: cleanEmail, message: cleanMessage });
     res.status(201).json({ ok: true, id: rows[0].id });
   } catch (err) {
     res.status(500).json({ error: err.message });
