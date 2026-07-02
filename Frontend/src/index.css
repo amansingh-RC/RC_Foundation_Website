@@ -1,17 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Archivo:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 :root {
   color-scheme: light;
-  --bg-dark: #f4f7fb;
-  --bg-panel: rgba(255, 255, 255, 0.92);
-  --text: #1f2937;
-  --text-muted: rgba(75, 85, 99, 0.75);
-  --border: rgba(15, 23, 42, 0.08);
+
+  /* Clean, professional light surfaces */
+  --bg: #ffffff;
+  --bg-soft: #faf7f0;        /* warm off-white section band */
+  --bg-tint: #f6efe1;        /* subtle gold-tinted band */
+  --panel: #ffffff;
+  --panel-2: #faf7f1;
+
+  /* Warm near-black text */
+  --text: #1c1a17;
+  --text-muted: #5f5a52;
+  --text-faint: #8a847a;
+
+  /* Gold brand accent (readable on white) */
   --accent: #b58a1f;
-  --accent-strong: #d4b43f;
-  --accent-soft: rgba(236, 210, 74, 0.16);
-  --shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+  --accent-strong: #d4a24e;
+  --accent-soft: rgba(181, 138, 31, 0.1);
+  --accent-deep: #7c5e14;
+
+  --border: rgba(28, 26, 23, 0.1);
+  --border-strong: rgba(28, 26, 23, 0.16);
+  --shadow-sm: 0 2px 10px rgba(28, 26, 23, 0.05);
+  --shadow: 0 18px 45px rgba(28, 26, 23, 0.09);
+  --shadow-lg: 0 30px 70px rgba(28, 26, 23, 0.12);
+
+  /* fonts */
+  --font-serif: 'Fraunces', ui-serif, Georgia, 'Times New Roman', Times, serif;
+  --font-sans: 'Archivo', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 html {
@@ -22,13 +42,13 @@ html {
 body {
   margin: 0;
   min-height: 100%;
-  font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-sans);
   color: var(--text);
-  background: radial-gradient(circle at 10% 12%, rgba(236, 210, 74, 0.12), transparent 18%),
-    radial-gradient(circle at 92% 8%, rgba(33, 203, 255, 0.08), transparent 22%),
-    linear-gradient(180deg, #f9fafb 0%, #eef5fb 45%, #f8fafc 100%);
+  background-color: var(--bg);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 * {
@@ -36,8 +56,8 @@ body {
 }
 
 ::selection {
-  background: rgba(236, 210, 74, 0.25);
-  color: #04111f;
+  background: rgba(181, 138, 31, 0.22);
+  color: #1c1a17;
 }
 
 img,
@@ -73,30 +93,50 @@ button {
   flex: 1;
 }
 
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: #f2ede3;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(181, 138, 31, 0.4);
+  border-radius: 999px;
+  border: 2px solid #f2ede3;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(181, 138, 31, 0.6);
+}
+
 .glass-card {
-  background: rgba(255, 255, 255, 0.76);
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 24px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   box-shadow: var(--shadow);
 }
 
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.12), transparent);
+  background: linear-gradient(90deg, transparent, rgba(181, 138, 31, 0.4), transparent);
   margin: 32px 0;
 }
 
 .lux-heading {
-  font-family: 'Playfair Display', ui-serif, Georgia, 'Times New Roman', Times, serif;
-  letter-spacing: -0.02em;
-  color: #111827;
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+  color: var(--text);
 }
 
 .lux-text {
   color: var(--text-muted);
 }
 
-
-
+/* Gold gradient text helper */
+.gold-text {
+  background: linear-gradient(120deg, #d4a24e, #b58a1f 55%, #7c5e14);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
